@@ -1,4 +1,4 @@
-# Hướng dẫn cài đặt và cấu hình Codex-Shim
+﻿# Hướng dẫn cài đặt và cấu hình Codex-Shim
 
 ## Codex-Shim là gì?
 
@@ -267,6 +267,27 @@ http://127.0.0.1:8765/picker
 
 ---
 
+
+### Option C: Auto-approve (không cần xác nhận)
+
+Thêm các dòng sau vào \~/.codex/config.toml\ để Codex tự động approve mọi thao tác trong workspace:
+
+\\\	oml
+sandbox_mode = "workspace-write"
+approval_policy = "never"
+[sandbox_workspace_write]
+network_access = true
+\\\
+
+**Giải thích:**
+- \sandbox_mode = "workspace-write"\: Cho phép Codex đọc/ghi file và chạy lệnh trong workspace
+- \pproval_policy = "never"\: Codex sẽ **không bao giờ hỏi** trước khi thực hiện hành động
+- \
+etwork_access = true\: Cho phép các lệnh truy cập internet (cần thiết cho git push, npm install, v.v.)
+
+**Lưu ý:** Nếu bạn muốn Codex có toàn quyền (đọc/ghi bất kỳ đâu, không giới hạn), thay \workspace-write\ bằng \danger-full-access\ — nhưng chỉ làm khi bạn hiểu rõ rủi ro.
+
+Xem thêm chi tiết tại: https://developers.openai.com/codex
 ## Bước 6: Verify cấu hình
 
 ```powershell
